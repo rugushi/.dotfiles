@@ -90,21 +90,13 @@ require("lazy").setup({
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 
-	-- NOTE: This is where your plugins related to LSP can be installed.
-	--  The configuration is done below. Search for lspconfig to find it below.
+	-- LSP
 	{
-		-- LSP Configuration & Plugins
-		"neovim/nvim-lspconfig",
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
 		dependencies = {
-			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", config = true },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim", opts = {} },
-
-			-- Additional lua configuration, makes nvim stuff amazing!
-			{ "folke/neodev.nvim" },
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
 		},
 	},
 
@@ -262,17 +254,6 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("tokyonight-storm")
-		end,
-	},
-
-	-- Shader for inactive windows
-	{
-		"sunjon/shade.nvim",
-		config = function()
-			require("shade").setup({
-				overlay_opacity = 50,
-				opacity_step = 1,
-			})
 		end,
 	},
 
@@ -766,30 +747,25 @@ local daps = {
 	delve = {},
 }
 
--- Setup neovim lua configuration
-require("neodev").setup()
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 
+-- Ensure servers are installed
 mason_lspconfig.setup({
 	ensure_installed = vim.tbl_keys(servers),
 })
 
-mason_lspconfig.setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-			filetypes = (servers[server_name] or {}).filetypes,
-		})
-	end,
-})
+-- Now manually setup the servers, no handlers function anymore
+for _, server_name in ipairs(vim.tbl_keys(servers)) do
+	vim.lsp.config(server_name, {
+		capabilities = capabilities,
+		on_attach = on_attach, -- you define this somewhere
+		settings = servers[server_name],
+		filetypes = servers[server_name].filetypes,
+	})
+end
 
 -- Ensure the daps above are installed
 local mason_dapconfig = require("mason-nvim-dap")
