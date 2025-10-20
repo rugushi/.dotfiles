@@ -1,0 +1,134 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+
+start-at-login = true
+
+enable-normalization-flatten-containers = false 
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+on-focus-changed = ['move-mouse monitor-lazy-center'] # Mouse lazily follows any focus (window or workspace)
+
+accordion-padding = 0
+
+[mode.main.binding]
+alt-enter = 'exec-and-forget open -na /Applications/Alacritty.app'
+
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-shift-h = 'move-through left'
+alt-shift-j = 'move-through down'
+alt-shift-k = 'move-through up'
+alt-shift-l = 'move-through right'
+
+alt-semicolon = 'split horizontal'
+alt-v = 'split vertical'
+
+alt-f = 'fullscreen'
+
+alt-s = 'layout v_accordion' # 'layout stacking' in i3
+alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+# Not supported, because this command is redundant in AeroSpace mental model.
+# See: https://github.com/nikitabobko/AeroSpace/blob/main/docs/guide.md#floating-windows
+#alt-space = 'focus toggle_tiling_floating'
+
+# `focus parent`/`focus child` are not yet supported, and it's not clear whether they should be supported at all
+# https://github.com/nikitabobko/AeroSpace/issues/5
+# alt-a = 'focus parent'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+alt-shift-c = 'reload-config'
+
+alt-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+alt-esc = 'mode main'
+
+[gaps]
+inner.horizontal = [{ monitor.main = 8 }, { monitor.secondary = 16 }, 10]
+inner.vertical = [{ monitor.main = 8 }, { monitor.secondary = 16 }, 10]
+outer.left = [{ monitor.main = 8 }, { monitor.secondary = 12 }, 10]
+outer.bottom = [{ monitor.main = 8 }, { monitor.secondary = 4 }, 10]
+outer.top = [{ monitor.main = 8 }, { monitor.secondary = 4 }, 10]
+outer.right = [{ monitor.main = 8 }, { monitor.secondary = 12 }, 10]
+
+[workspace-to-monitor-force-assignment]
+1 = ['main', 'secondary']
+2 = ['main', 'secondary']
+3 = ['main', 'secondary']
+4 = ['main', 'secondary']
+7 = ['secondary', 'main']
+8 = ['secondary', 'main']
+9 = ['secondary', 'main']
+
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari'
+    run = 'move-node-to-workspace 1' 
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace 1' 
+
+[[on-window-detected]]
+    if.app-id = 'org.alacritty'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+    if.app-id = 'com.todoist.mac.Todoist'
+    run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace 9'
+
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'LeagueClient|League of Legends'
+#     run = 'layout floating'
+#
+# [[on-window-detected]]
+#     if.app-name-regex-substring = 'com.riotgames.LeagueofLegends.LeagueClientUx'
+#     run = 'layout floating'
+
+
+# For better performance:  (https://nikitabobko.github.io/AeroSpace/guide#a-note-on-displays-have-separate-spaces)
+#You can disable the setting by running: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
+#in System Settings: System Settings → Desktop & Dock → Displays have separate Spaces). Logout is required for the setting to take effect.
