@@ -120,14 +120,9 @@ outer.right = [{ monitor.main = 8 }, { monitor.secondary = 12 }, 10]
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace 9'
 
-# [[on-window-detected]]
-#     if.app-name-regex-substring = 'LeagueClient|League of Legends'
-#     run = 'layout floating'
-#
-# [[on-window-detected]]
-#     if.app-name-regex-substring = 'com.riotgames.LeagueofLegends.LeagueClientUx'
-#     run = 'layout floating'
-
+[[on-window-detected]]
+    if.app-id = "com.wizards.mtga"
+    run = "layout floating"
 
 # For better performance:  (https://nikitabobko.github.io/AeroSpace/guide#a-note-on-displays-have-separate-spaces)
 #You can disable the setting by running: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer

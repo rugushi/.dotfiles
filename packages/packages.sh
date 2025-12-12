@@ -1,4 +1,6 @@
 brew tap hashicorp/tap
+brew tap nikitabobko/tap
+brew tap ngrok/ngrok
 
 apps=(
 	git
@@ -56,7 +58,6 @@ casks=(
 	runelite
 	jagex
 	steam
-	league-of-legends
 
 	figma
 

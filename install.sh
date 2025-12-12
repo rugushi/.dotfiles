@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 if which brew &> /dev/null; then
 	echo "homebrew is already installed"
 else
@@ -16,6 +17,8 @@ fi
 
 #oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+export ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
 #brew for m chip
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/"$(whoami)"/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -40,10 +43,17 @@ done
 #reset context to init if already exists
 git --reset hard
 
-#clone zsh syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# zsh-syntax-highlighting
+if [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+    git -C "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" pull
+else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+fi
 
-#clone zsh auto suggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
+# zsh-autosuggestions
+if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+    git -C "$ZSH_CUSTOM/plugins/zsh-autosuggestions" pull
+else
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+fi
 

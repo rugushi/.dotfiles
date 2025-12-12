@@ -371,15 +371,30 @@ require("lazy").setup({
 	{ "nvim-tree/nvim-web-devicons", version = false },
 
 	-- leetcode
-	"kawre/leetcode.nvim",
-	build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-	dependencies = {
-		-- include a picker of your choice, see picker section for more details
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
+	{
+		"kawre/leetcode.nvim",
+		cmd = "Leet", -- or "LeetCode" if that's the correct command
+		config = function()
+			require("leetcode").setup({})
+		end,
+		dependencies = {
+			"nvim-telescope/telescope.nvim", -- optional, for UI
+			"nvim-lua/plenary.nvim", -- required
+			"MunifTanjim/nui.nvim", -- required
+		},
 	},
-	opts = {
-		-- configuration goes here
+
+	-- noice
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
 }, {})
 
@@ -857,5 +872,22 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "path" },
+	},
+})
+
+require("noice").setup({
+	lsp = {
+		override = {
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			["vim.lsp.util.stylize_markdown"] = true,
+			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+		},
+	},
+	presets = {
+		bottom_search = true, -- use a classic bottom cmdline for search
+		command_palette = true, -- position the cmdline and popupmenu together
+		long_message_to_split = true, -- long messages will be sent to a split
+		inc_rename = false, -- enables an input dialog for inc-rename.nvim
+		lsp_doc_border = false, -- add a border to hover docs and signature help
 	},
 })
