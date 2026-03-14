@@ -37,6 +37,8 @@ apps=(
 	eksctl
 
 	ngrok/ngrok/ngrok
+
+	copilot-cli
 )
 
 casks=(
@@ -61,8 +63,8 @@ casks=(
 
 	figma
 
-	todoist
 	obsidian
+	anki
 
 	malwarebytes
 	surfshark
