@@ -384,7 +384,7 @@ require("lazy").setup({
 		},
 	},
 
-	-- noice
+	-- noice, awesome cmdline and pop menu
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",

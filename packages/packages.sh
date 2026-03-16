@@ -38,6 +38,7 @@ apps=(
 
 	ngrok/ngrok/ngrok
 
+	gh
 	copilot-cli
 )
 
