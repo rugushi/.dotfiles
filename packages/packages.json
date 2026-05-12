@@ -1,0 +1,50 @@
+{
+  "tap": ["nikitabobko/tap"],
+  "base": ["git", "tree", "btop", "stow", "ripgrep", "grep", "fd"],
+  "tool": [
+    "zsh",
+    "neovim",
+    "tmux",
+
+    "kubernetes-cli",
+    "kubectx",
+
+    "helm",
+
+    "minikube",
+    "k3d",
+
+    "k9s",
+
+    "awscli",
+    "eksctl",
+
+    "ngrok"
+  ],
+  "cask": [
+    "zed",
+
+    "docker",
+
+    "alacritty",
+    "nikitabobko/tap/aerospace",
+
+    "betterdisplay",
+    "hazeover",
+
+    "slack",
+    "discord",
+
+    "spotify",
+
+    "obsidian",
+    "todoist-app",
+
+    "jagex",
+    "runelite",
+
+    "surfshark",
+    "malwarebytes"
+  ],
+  "font": ["font-jetbrains-mono-nerd-font"]
+}

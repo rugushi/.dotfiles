@@ -1,0 +1,37 @@
+{
+  "agent": {
+    "enabled": true,
+    // External agents over ACP are not supported so we can't default to opencode
+    "default_model": null,
+  },
+
+  "agent_servers": {
+    "OpenCode": {
+      "type": "custom",
+      "command": "opencode",
+      "args": ["acp"],
+    },
+  },
+
+  "file_types": {
+    "OpenTofu": ["tf"],
+    "OpenTofu Vars": ["tfvars"],
+    "JSONC": [
+      "**/.zed/*.json",
+      "**/.vscode/**/*.json",
+      "**/{zed,Zed}/{settings,keymap,tasks,debug}.json",
+      "tsconfig*.json",
+    ],
+    "Markdown": [".rules", ".cursorrules", ".windsurfrules", ".clinerules"],
+    "Shell Script": [".env.*"],
+  },
+
+  "auto_install_extensions": {
+    "html": true,
+    "toml": true,
+    "git-firefly": true,
+    "dockerfile": true,
+    "nix": true,
+    "lua": true,
+  },
+}

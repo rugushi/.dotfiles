@@ -1,0 +1,137 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "space": null,
+
+      // Search Panels
+      "space s f": "file_finder::Toggle",
+      "space s t": "project_panel::Toggle",
+      "space s s": "project_symbols::Toggle",
+      "space s g": "workspace::NewSearch",
+    },
+  },
+
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "tab": "editor::ContextMenuNext",
+      "shift-tab": "editor::ContextMenuPrevious",
+      "enter": "editor::ConfirmCompletion",
+    },
+  },
+
+  {
+    "context": "InlineAssistant > Editor",
+    "bindings": {
+      "escape": "vim::NormalBefore",
+      "ctrl-c": "editor::Cancel",
+    },
+  },
+
+  {
+    "context": "Editor && VimControl && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space": null,
+
+      // LSP
+      "space l r": "editor::RestartLanguageServer",
+
+      // Hunk
+      "space h s": "git::ToggleStaged",
+      "space h S": "git::StageFile",
+      "space h r": "git::RestoreAndNext",
+      "space h R": ["git::RestoreFile", { "skip_prompt": false }],
+
+      // Toggle
+      "space t l": "workspace::ToggleLeftDock",
+      "space t r": "workspace::ToggleRightDock",
+      "space t d": "diagnostics::Deploy",
+
+      // Panel
+      "space s a": "agent::Toggle",
+      "space s d": "editor::ToggleDiagnostics",
+      "space s f": "file_finder::Toggle",
+      "space s h": "git_panel::Toggle",
+      "space s t": "project_panel::Toggle",
+      "space s g": "workspace::NewSearch",
+      "space s s": "project_symbols::Toggle",
+
+      // LLM
+      // "space i a": [
+      //   "assistant::InlineAssist",
+      //   {
+      //     "agent": {
+      //       "custom": {
+      //         "name": "OpenCode",
+      //         "command": {
+      //           "command": "opencode",
+      //           "args": ["acp"],
+      //         },
+      //       },
+      //     },
+      //   },
+      // ],
+      "space n a": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": {
+            "custom": {
+              "name": "OpenCode",
+              "command": {
+                "command": "opencode",
+                "args": ["acp"],
+              },
+            },
+          },
+        },
+      ],
+    },
+  },
+
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space": null,
+      "space a": "project_panel::NewFile",
+      "space shift-a": "project_panel::NewDirectory",
+      "space r": "project_panel::Rename",
+      "space d": "project_panel::Delete",
+
+      // Go to other panel
+      "space s a": "agent::Toggle",
+      "space s d": "editor::ToggleDiagnostics",
+      "space s f": "file_finder::Toggle",
+      "space s h": "git_panel::Toggle",
+      "space s g": "workspace::NewSearch",
+      "space s s": "project_symbols::Toggle",
+
+      // Close
+      "space s t": "project_panel::Toggle",
+    },
+  },
+
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector",
+    "use_key_equivalents": true,
+    "bindings": {
+      "space": null,
+
+      // Hunk
+      "space h s": "git::ToggleStaged",
+      "space h S": "git::StageFile",
+      "space h r": "git::RestoreAndNext",
+      "space h R": ["git::RestoreFile", { "skip_prompt": false }],
+
+      // Go to other panel
+      "space s a": "agent::Toggle",
+      "space s d": "editor::ToggleDiagnostics",
+      "space s f": "file_finder::Toggle",
+      "space s g": "workspace::NewSearch",
+      "space s s": "project_symbols::Toggle",
+
+      // Close
+      "space s h": "git_panel::Toggle",
+    },
+  },
+]

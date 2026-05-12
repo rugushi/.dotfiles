@@ -1,0 +1,19 @@
+{
+  "dev": {
+    "base": ["git", "tree", "btop", "cmake", "just"],
+    "tool": [
+      "zsh",
+      "go",
+      "gopls",
+      "delve",
+      "gotestsum",
+      "lua",
+      "opentofu",
+      "tofu-ls",
+      "python315",
+      "yq",
+      "jq",
+      "opencode"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "enabled_providers": ["github-copilot"],
+
+  "permission": {
+    "read": "ask",
+    "edit": "ask",
+    "write": "ask",
+    "bash": "ask"
+  },
+
+  "agent": {
+    "orchestrator": {
+      "prompt_file": "agents/orchestrator.md"
+    },
+    "plan": {
+      "prompt_file": "agents/plan.md"
+    },
+    "build": {
+      "prompt_file": "agents/build.md"
+    }
+  },
+
+  "default_agent": "plan"
+}

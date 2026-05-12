@@ -1,0 +1,92 @@
+{
+  "cli_default_open_behavior": "new_window",
+
+  // on mac: Desktop & Dock > Windows > Close windows when quitting an application. To prevent opening previous editors next time.
+  "restore_on_startup": "launchpad",
+
+  "base_keymap": "VSCode",
+
+  "vim_mode": true,
+
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 1000,
+  },
+
+  "project_panel": {
+    "dock": "left",
+  },
+
+  "active_pane_modifiers": {
+    "border_size": 1.0,
+    "inactive_opacity": 0.5,
+  },
+
+  "buffer_font_size": 15,
+  "buffer_font_weight": 400,
+
+  "theme": {
+    "mode": "dark",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark Soft",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+
+  "ssh_connections": [
+    {
+      "host": "localhost",
+      "username": "root",
+      "port": 2222,
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/workspace"],
+        },
+      ],
+      "nickname": "dev-2222",
+    },
+    {
+      "host": "localhost",
+      "username": "root",
+      "port": 2223,
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/workspace"],
+        },
+      ],
+      "nickname": "dev-2223",
+    },
+    {
+      "host": "localhost",
+      "username": "root",
+      "port": 2224,
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/workspace"],
+        },
+      ],
+      "nickname": "dev-2224",
+    },
+  ],
+  "read_ssh_config": true,
+
+  "agent": {
+    "enabled": true,
+    // External agents over ACP are not supported so we can't default to opencode
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-haiku-4.5",
+      "enable_thinking": true,
+    },
+
+    "inline_assistant_use_streaming_tools": true,
+
+    "sidebar_side": "left",
+  },
+}

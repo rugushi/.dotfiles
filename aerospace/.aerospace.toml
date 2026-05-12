@@ -105,6 +105,10 @@ outer.right = [{ monitor.main = 8 }, { monitor.secondary = 12 }, 10]
     run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+    if.app-id = 'dev.zed.Zed'
+    run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
     if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace 7'
 

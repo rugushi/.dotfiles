@@ -1,1 +1,1 @@
-stows=(zsh tmux nvim aerospace alacritty)
+stows=(zsh tmux nvim aerospace alacritty zed)
